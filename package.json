@@ -1,0 +1,52 @@
+{
+  "name": "@vue-norma/ui",
+  "version": "2.5.10",
+  "description": "Probably the most normal UI KIt for VueJS",
+  "type": "module",
+  "main": "./dist/norma.umd.ts",
+  "module": "./dist/norma.es.ts",
+  "types": "./dist/components/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "ui",
+    "vue",
+    "ux",
+    "uikit"
+  ],
+  "author": "Yuriy Grinev",
+  "license": "MIT",
+  "homepage": "https://vue-norma.ru",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuriygr/vue-norma.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yuriygr/vue-norma/issues"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/norma.es.ts",
+      "require": "./dist/norma.umd.ts"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "scripts": {
+    "build": "vue-tsc && vite build",
+    "p": "npm publish --access public"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.12",
+    "@vitejs/plugin-vue": "^4.6.2",
+    "sass": "^1.77.8",
+    "typescript": "^5.5.4",
+    "vite": "^4.5.3",
+    "vite-plugin-dts": "^4.0.0-beta.1",
+    "vue": "^3.3.4",
+    "vue-tsc": "^2.0.28"
+  },
+  "peerDependencies": {
+    "vue": ">=3"
+  }
+}
