@@ -35,7 +35,7 @@ export default {
       type: String,
       default: 'm',
       validator(value) {
-        return ['s', 'm', 'l'].includes(value)
+        return ['xs', 's', 'm', 'l'].includes(value)
       }
     },
     stretched: {
@@ -90,6 +90,8 @@ export default {
     },
     iconSize() {
       switch (this.size) {
+        case 'xs':
+          return 12;
         case 's':
           return 14;
         case 'm':
@@ -110,24 +112,31 @@ export default {
 
 <style lang="scss">
 .button {
+  &--size-xs {
+    --button--button-size: 24px;
+    --button--font-size: 1.2rem;
+    --button--padding: 5px;
+  }
   &--size-s {
     --button--button-size: 28px;
-    --button--font-size: 1.4rem;
-    --button--padding: 16px;
+    --button--font-size: 1.3rem;
+    --button--padding: 10px;
   }
   &--size-m {
     --button--button-size: 32px;
     --button--font-size: 1.4rem;
-    --button--padding: 16px;
+    --button--padding: 12px;
   }
   &--size-l {
     --button--button-size: 38px;
-    --button--font-size: 1.5rem;
+    --button--font-size: 1.4rem;
     --button--padding: 16px;
   }
 }
 
 .button {
+  --button__badge--color: #e03131;
+
   &--mode-primary {
     --button--background: #212529;
     --button--color: #f8f9fa;
@@ -140,8 +149,6 @@ export default {
       --button--background-hover: #e5e5e3;
       --button--color-hover: #1d1d1d;
     }
-
-    --button__badge--color: #e03131;
   }
 
   &--mode-secondary {
@@ -156,8 +163,6 @@ export default {
       --button--background-hover: #242424;
       --button--color-hover: #f0f0f0;
     }
-
-    --button__badge--color: #e03131;
   }
 
   &--mode-tertiary {
@@ -172,8 +177,6 @@ export default {
       --button--background-hover: #242424;
       --button--color-hover: #f0f0f0;
     }
-
-    --button__badge--color: #e03131;
   }
 
   &--mode-outline {

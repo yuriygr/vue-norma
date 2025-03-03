@@ -29,7 +29,7 @@ const props = defineProps({
   size: {
     type: String,
     default: 'm',
-    validator(value) {
+    validator(value: string) {
       return ['s', 'm', 'l'].includes(value)
     }
   }
@@ -72,7 +72,7 @@ const $elClass = computed(() => {
   --placeholder-text--color: #868e96;
 
   html[data-theme='black'] & {
-    --placeholder-text--color: #aaa;
+    --placeholder-text--color: #828282;
   }
 }
 

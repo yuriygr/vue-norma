@@ -1,7 +1,7 @@
 // Form'an
 export { default as Group } from './components/Group.vue'
 export { default as Icon } from './components/Icon.vue'
-export { default as NButton } from './components/NButton.vue'
+export { default as NButton } from './components/Button.vue'
 export { default as ButtonsGroup } from './components/ButtonsGroup.vue'
 
 // WTF
@@ -11,7 +11,7 @@ export { default as Placeholder } from './components/Placeholder.vue'
 export { default as PlaceholderLoading } from './components/PlaceholderLoading.vue'
 export { default as Separator } from './components/Separator.vue'
 export { default as Spacer } from './components/Spacer.vue'
-export { default as NHeader } from './components/NHeader.vue'
+export { default as NHeader } from './components/Header.vue'
 export { default as MetaInfo } from './components/MetaInfo.vue'
 
 // Layers

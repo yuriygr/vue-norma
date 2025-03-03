@@ -15,6 +15,8 @@
       </template>
 
     </template>
+
+    <slot />
   </div>
 </template>
 
@@ -76,9 +78,9 @@ export default {
   --meta-info__item--color-active: #212529;
 
   html[data-theme="black"] & {
-    --meta-info__item--color: #999;
-    --meta-info__item--color-hover: #fffcea;
-    --meta-info__item--color-active: #fffcea;
+    --meta-info__item--color: #919190;
+    --meta-info__item--color-hover: #f2f2f0;
+    --meta-info__item--color-active: #f2f2f0;
   }
 }
 
@@ -110,7 +112,7 @@ export default {
   }
 
   &__item +  &__item {
-    margin-left: .5rem;
+    margin-left: 1.25rem;
   }
 }
 </style>

@@ -25,7 +25,7 @@ export default {
     overflow: auto;
 
     :not(:first-child) {
-      margin-left: .5rem;
+      margin-left: .3rem;
     }
 
     &::-webkit-scrollbar {

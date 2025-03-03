@@ -1,7 +1,7 @@
 <template>
   <div class="modal-layer" v-if="visible" @click="clickOnLayer">
     <div class="modal-layer__container">
-      <component :is="component" v-bind="props" class="modal-layer__content"></component>
+      <component :is="component" v-bind="props" class="modal-layer__content" ref="modal"></component>
     </div>
   </div>
 </template>
@@ -20,12 +20,13 @@ export default {
     visible() { return this.component !== false }
   },
   methods: {
-    show({ component, props, onClose }) {
+    // Handlers
+    _show({ component, props, onClose }) {
       this.component = component
       this.props = props
       this.onClose = onClose
     },
-    async close() {
+    async _close() {
       if (!this.component) return
 
       await this.onClose()
@@ -34,25 +35,28 @@ export default {
       this.props = []
       this.onClose = () => {}
     },
-    closeModalOnEsc(event) {
-      if (event.keyCode === 27)
-        this.$modals.close()
+    // Other methods
+    async closeModalOnEsc(event) {
+      if (event.keyCode === 27) {
+        if (!this.component) return
+        await this.$refs.modal.closeModal()
+      }
     },
-    clickOnLayer(event) {
+    async clickOnLayer(event) {
       if (event.target.closest('.modal-layer__content')) return
       if (!this.component) return
-      this.$modals.close()
+      await this.$refs.modal.closeModal()
     }
   },
   created() {
-    this.$modals.on('show', this.show)
-    this.$modals.on('close', this.close)
+    this.$modals.on('show', this._show)
+    this.$modals.on('close', this._close)
 
     document.addEventListener('keydown', this.closeModalOnEsc)
   },
   beforeDestroy() {
-    this.$modals.off('show', this.show)
-    this.$modals.off('close', this.close)
+    this.$modals.off('show', this._show)
+    this.$modals.off('close', this._close)
 
     document.removeEventListener('keydown', this.closeModalOnEsc)
   }

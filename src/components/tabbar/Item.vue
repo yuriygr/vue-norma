@@ -1,13 +1,17 @@
 <template>
-
   <template v-if="isHasLink">
-    <router-link v-if="isInnerLink" custom v-slot="{ isActive, href, navigate }" :to="to">
+    <router-link v-if="isInnerLink" custom v-slot="{ isActive, href, navigate, isExactActive }" :to="to">
       <a
         :href="href"
-        @click="navigate"
-        :class="[ 'tabbar-item', { 'tabbar-item--active': isActive ?? preActive } ]"
-        :title="title"
         :target="target"
+        @click="e => {
+          if (isExactActive) {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }
+          navigate(e)
+        }"
+        :class="[ 'tabbar-item', { 'tabbar-item--active': preActive || (preActive || isActive), 'tabbar-item--disabled': disabled } ]"
+        :title="title"
       >
         <div class="tabbar-item__icon">
           <span v-if="isHasBadge" class="tabbar-item__badge"></span>
@@ -19,7 +23,7 @@
 
     <a v-else-if="isExternalLink"
       :href="to"
-      :class="[ 'tabbar-item', { 'tabbar-item--active': preActive } ]"
+      :class="[ 'tabbar-item', { 'tabbar-item--active': preActive, 'tabbar-item--disabled': disabled } ]"
       :title="title"
       :target="target"
     >
@@ -32,7 +36,7 @@
   </template>
 
   <div v-else
-    :class="[ 'tabbar-item', { 'tabbar-item--active': preActive } ]"
+    :class="[ 'tabbar-item', { 'tabbar-item--active': preActive, 'tabbar-item--disabled': disabled } ]"
     :title="title"
     @click="clickEvent"
   >
@@ -54,6 +58,10 @@ export default {
     },
     to: {
       type: [ String, Object ],
+      default: false
+    },
+    disabled: {
+      type: Boolean,
       default: false
     },
     preActive: {
@@ -105,7 +113,7 @@ export default {
   --tabbar-item__badge--border: var(--x-background);
 
   html[data-theme='black'] & {
-    --tabbar-item--color: #aaa;
+    --tabbar-item--color: #9f9f9f;
     --tabbar-item--color-hover: #fffcea;
     --tabbar-item--color-active: #fffcea;
 

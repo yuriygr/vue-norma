@@ -5,7 +5,7 @@
         :href="href"
         :target="target"
         @click="navigate"
-        :class="[ 'tabs-item', 'tabs-item--size-' + this.size, { 'tabs-item--selected': selected ?? isActive, 'tabs-item--disabled': disabled } ]"
+        :class="[ 'tabs-item', 'tabs-item--size-' + this.size, { 'tabs-item--selected': selected ?? (isActive || selected), 'tabs-item--disabled': disabled } ]"
       >
         <span class="tabs-item__icon" v-if="icon">
           <icon :name="icon" :size="iconSize" />
@@ -55,7 +55,10 @@ export default {
     },
     size: {
       type: String,
-      default: 's'
+      default: 's',
+      validator(value) {
+        return ['xs', 's', 'm', 'l'].includes(value)
+      }
     },
     selected: {
       type: Boolean,
@@ -110,38 +113,40 @@ export default {
   }
   &--size-s {
     --tabs-item--height: 28px;
-    --tabs-item--font-size: 1.4rem;
-    --tabs-item--padding: 7px;
+    --tabs-item--font-size: 1.3rem;
+    --tabs-item--padding: 10px;
   }
   &--size-m {
     --tabs-item--height: 32px;
     --tabs-item--font-size: 1.4rem;
-    --tabs-item--padding: 9px;
+    --tabs-item--padding: 12px;
   }
   &--size-l {
-    --tabs-item--height: 42px;
+    --tabs-item--height: 38px;
     --tabs-item--font-size: 1.5rem;
-    --tabs-item--padding: 12px;
+    --tabs-item--padding: 16px;
   }
 }
 
 .tabs-item {
   --tabs-item--background: transparent;
-  --tabs-item--color: #495057;
-  --tabs-item--background-hover: #e9ecef;
+  --tabs-item--color: #868e96;
+  
+  --tabs-item--background-hover: transparent;
   --tabs-item--color-hover: #212529;
+
   --tabs-item--background-selected: #f1f3f5;
-  --tabs-item--color-selected: #343a40;
+  --tabs-item--color-selected: #212529;
 
   html[data-theme="black"] & {
     --tabs-item--background: transparent;
     --tabs-item--color: #828282;
 
-    --tabs-item--background-hover: #242424;
-    --tabs-item--color-hover: #828282;
+    --tabs-item--background-hover: #transparent;
+    --tabs-item--color-hover: #f2f2f0;
 
     --tabs-item--background-selected: #1f1f1f;
-    --tabs-item--color-selected: #f0f0f0;
+    --tabs-item--color-selected: #f2f2f0;
   }
 }
 

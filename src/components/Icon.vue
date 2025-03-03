@@ -5,27 +5,21 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, computed } from 'vue'
+import { withDefaults, defineProps, computed } from 'vue'
 
-const props = defineProps({
-  name: {
-    type: String,
-    default: "",
-    requires: true
-  },
-  width: {
-    type: [String, Number],
-    default: 16
-  },
-  height: {
-    type: [String, Number],
-    default: 16
-  },
-  size: {
-    type: [Boolean, String, Number],
-    default: false
-  }
+export interface IconProps {
+  name: string
+  width?: number
+  height?: number
+  size?: number
+}
+
+const props = withDefaults(defineProps<IconProps>(), {
+  name: "",
+  width: 16,
+  height: 16
 })
+
 
 const dimensions = computed(() => {
   return {
