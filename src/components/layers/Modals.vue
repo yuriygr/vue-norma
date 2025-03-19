@@ -1,8 +1,6 @@
 <template>
-  <div class="modal-layer" v-if="visible" @click="clickOnLayer">
-    <div class="modal-layer__container">
-      <component :is="component" v-bind="props" class="modal-layer__content" ref="modal"></component>
-    </div>
+  <div class="modal-layer" v-if="visible" @click.self="clickOnLayer">
+    <component :is="component" v-bind="props" class="modal-layer__content" ref="modal"></component>
   </div>
 </template>
 

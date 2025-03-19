@@ -1,15 +1,10 @@
 <template>
   <template v-if="isHasLink">
-    <router-link v-if="isInnerLink" custom v-slot="{ isActive, href, navigate, isExactActive }" :to="to">
+    <router-link v-if="isInnerLink" custom v-slot="{ isActive, href, navigate }" :to="to">
       <a
         :href="href"
         :target="target"
-        @click="e => {
-          if (isExactActive) {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }
-          navigate(e)
-        }"
+        @click="navigate"
         :class="[ 'tabbar-item', { 'tabbar-item--active': preActive || (preActive || isActive), 'tabbar-item--disabled': disabled } ]"
         :title="title"
       >

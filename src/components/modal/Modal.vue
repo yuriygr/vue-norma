@@ -57,6 +57,9 @@ export default {
     max-width: 890px;
     @media (max-width: 905px) {
       border-radius: 0;
+      border-top: none;
+      border-left: none;
+      border-right: none;
       margin: 0 auto;
       height: 100%;
     }
@@ -66,6 +69,9 @@ export default {
     max-width: 650px;
     @media (max-width: 665px) {
       border-radius: 0;
+      border-top: none;
+      border-left: none;
+      border-right: none;
       margin: 0 auto;
       height: 100%;
     }
@@ -75,6 +81,9 @@ export default {
     max-width: 490px;
     @media (max-width: 505px) {
       border-radius: 0;
+      border-top: none;
+      border-left: none;
+      border-right: none;
       margin: 0 auto;
       height: 100%;
     }
