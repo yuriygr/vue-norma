@@ -1,6 +1,6 @@
 {
   "name": "@vue-norma/ui",
-  "version": "2.5.48",
+  "version": "2.5.50",
   "description": "Probably the most normal UI KIt for VueJS",
   "type": "module",
   "main": "./dist/norma.umd.ts",

@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :class="elClass">
+  <component :is="component" :class="elClass" ref="button">
     <div class="button__container">
       <span class="button__icon button__icon--before" v-if="icon_before">
         <icon :name="icon_before" :size="iconSize" />
@@ -105,6 +105,9 @@ export default {
     isHasBadge() { return this.badge }
   },
   methods: {
+    focus() {
+      this.$refs.button.focus()
+    },
     hasSlot(name) { return !!this.$slots[name] }
   }
 }

@@ -61,7 +61,6 @@ export default {
       border-left: none;
       border-right: none;
       margin: 0 auto;
-      height: 100%;
     }
   }
 
@@ -73,7 +72,6 @@ export default {
       border-left: none;
       border-right: none;
       margin: 0 auto;
-      height: 100%;
     }
   }
 
@@ -85,7 +83,6 @@ export default {
       border-left: none;
       border-right: none;
       margin: 0 auto;
-      height: 100%;
     }
   }
 
